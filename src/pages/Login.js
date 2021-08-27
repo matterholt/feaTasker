@@ -1,15 +1,49 @@
-import { Link as ChakraLink, Text, Center, Box } from "@chakra-ui/react";
+import {useState} from 'react'
+import {
+  Link as ChakraLink,
+  Text,
+  Container,
+  Flex,
+  Box,
+  Heading,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+} from "@chakra-ui/react";
 function Login() {
-  return (
-      <Center w="100vw" h="100vh">
-          <Box>
+    const [email, setEmail] = useState("");
 
-      <Text fontSize="5xl">login in Page</Text>
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      alert(`Email: ${email}`);
+    };
+  return (
+    <Container w="100vw" h="100vh">
       <ChakraLink href="/" flexGrow={1} mr={2}>
         Home
       </ChakraLink>
+      <Flex width="full" align="center" justifyContent="center">
+        <Box p={2}>
+          <Box textAlign="center">
+            <Heading>Login</Heading>
           </Box>
-    </Center>
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <FormLabel>Email</FormLabel>
+              <Input
+                type="email"
+                placeholder="test@test.com"
+                onChange={(event) => setEmail(event.currentTarget.value)}
+              />
+            </FormControl>
+            <Button width="full" mt={4} type="submit">
+              Sign In
+            </Button>
+          </form>
+        </Box>
+      </Flex>
+    </Container>
   );
 }
 
