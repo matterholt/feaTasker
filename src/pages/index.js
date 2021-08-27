@@ -27,10 +27,6 @@ export default function Index({ book }) {
     <Hero />
     <Main>
       <Box>
-        <div>
-          <h1>{book.title}</h1>
-          <p>{book.description}</p>
-        </div>
 
         <Text>Create the opportunity for a smooth tracking system</Text>
         <ChakraLink href="./Book" flexGrow={1} mr={2}>
@@ -43,16 +39,3 @@ export default function Index({ book }) {
   </Container>
 )}
 
-
-
-export async function getServerSideProps() {
-  // Server-side requests are mocked by `mocks/server.js`.
-  const res = await fetch("https://my.backend/book");
-  const book = await res.json();
-
-  return {
-    props: {
-      book,
-    },
-  };
-}
