@@ -19,22 +19,40 @@ import {
   Footer,
 } from "../components/index";
 
-const Index = () => (
+
+
+export default function Index({ book }) {
+  return(
   <Container height="100vh">
     <Hero />
     <Main>
       <Box>
+        <div>
+          <h1>{book.title}</h1>
+          <p>{book.description}</p>
+        </div>
 
-      <Text>Create the opportunity for a smooth tracking system</Text>
-      <ChakraLink href="./Login" flexGrow={1} mr={2}>
-          Login
-      </ChakraLink>
+        <Text>Create the opportunity for a smooth tracking system</Text>
+        <ChakraLink href="./Book" flexGrow={1} mr={2}>
+          Login-book
+        </ChakraLink>
       </Box>
-
     </Main>
 
     <DarkModeSwitch />
   </Container>
-);
+)}
 
-export default Index
+
+
+export async function getServerSideProps() {
+  // Server-side requests are mocked by `mocks/server.js`.
+  const res = await fetch("https://my.backend/book");
+  const book = await res.json();
+
+  return {
+    props: {
+      book,
+    },
+  };
+}

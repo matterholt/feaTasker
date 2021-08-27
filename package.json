@@ -6,6 +6,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "msw": {
+    "workerDirectory": "public"
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
     "@chakra-ui/react": "^1.4.2",
@@ -15,5 +18,8 @@
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "msw": "^0.35.0"
   }
 }
