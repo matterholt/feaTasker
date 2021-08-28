@@ -28,8 +28,8 @@ export default function Index({ book }) {
       <Main>
         <Box>
           <Text>Create the opportunity for a smooth tracking system</Text>
-          <ChakraLink href="./Login" flexGrow={1} mr={2}>
-            Login
+          <ChakraLink href="./Signup" flexGrow={1} mr={2}>
+            Sign up
           </ChakraLink>
         </Box>
       </Main>

@@ -1,14 +1,16 @@
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react'
+import {Provider} from "next-auth/client"
 
 import theme from '../theme'
 
   
-if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  require("../../mocks");
-}
+// if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
+//   require(");
+// }
 
 function MyApp({ Component, pageProps }) {
   return (
+    <Provider>
     <ChakraProvider resetCSS theme={theme}>
       <ColorModeProvider
         options={{
@@ -18,6 +20,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </ColorModeProvider>
     </ChakraProvider>
+    </Provider>
   )
 }
 
