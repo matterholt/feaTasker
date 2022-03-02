@@ -1,18 +1,34 @@
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
 
 
-const Index = () => (
-  <Container height="100vh">
+import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+import Link from "next/link";
+import {
+  Link as ChakraLink,
+  Text,
+  Box,
+} from "@chakra-ui/react";
+import {
+  Hero,Header,
+  Container,
+  Main,
+  DarkModeSwitch,
+  Footer,
+} from "../components/landing/index";
 
-    <Main>
 
-    </Main>
 
-    <DarkModeSwitch />
+export default function Index({ book }) {
+  return (
+    <Container height="100vh">
+      <Header/>
+      <Hero />
+      <Main>
+        <Box>
+          <Text>Create the opportunity for a smooth tracking system</Text>
 
-  </Container>
-)
+        </Box>
+      </Main>
 
-export default Index
+    </Container>
+  );}
+
