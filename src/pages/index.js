@@ -6,35 +6,29 @@ import {
   Link as ChakraLink,
   Text,
   Box,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
 } from "@chakra-ui/react";
 import {
-  Hero,
+  Hero,Header,
   Container,
   Main,
   DarkModeSwitch,
   Footer,
-} from "../components/index";
+} from "../components/landing/index";
 
 
 
 export default function Index({ book }) {
   return (
     <Container height="100vh">
+      <Header/>
       <Hero />
       <Main>
         <Box>
           <Text>Create the opportunity for a smooth tracking system</Text>
-          <ChakraLink href="./Signup" flexGrow={1} mr={2}>
-            Sign up
-          </ChakraLink>
+
         </Box>
       </Main>
 
-      <DarkModeSwitch />
     </Container>
   );}
 
