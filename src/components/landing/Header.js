@@ -23,8 +23,8 @@ export const Header =()=>{
         <HStack bg="blue.500" w="full" h="20" p="10" justify="space-between">
             <h1>FEA Tasker</h1>
             <HStack>
-                <InternalLink linkTo="./Login" title="LOG ON" cssStyle={{bgCustom:"whiteAlpha.400", colorCustom:"gray.800"}}/>
-                <InternalLink linkTo="./Signup" title="SIGN UP" cssStyle={{bgCustom:"whiteAlpha.700"}}/>
+                <InternalLink linkTo="./Login" title="LOG ON" cssStyle={{bgCustom:"white", colorCustom:"gray.800"}}/>
+                <InternalLink linkTo="./Signup" title="SIGN UP" cssStyle={{bgCustom:"whiteAlpha.900"}}/>
             </HStack>
   
         </HStack>

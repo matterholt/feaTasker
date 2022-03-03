@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import {
   Hero,Header,
-  Container,
+  PageContainer,
   Main,
   DarkModeSwitch,
   Footer,
@@ -17,18 +17,23 @@ import {
 
 
 
-export default function Index({ book }) {
+export default function Index() {
   return (
-    <Container height="100vh">
+    <PageContainer >
       <Header/>
       <Hero />
       <Main>
         <Box>
           <Text>Create the opportunity for a smooth tracking system</Text>
-
         </Box>
-      </Main>
+        <Box>
+          <Text></Text>
+        </Box>
+      </Main >
+      <Footer>
+        <Text>Track it where it matters</Text>
+      </Footer>
 
-    </Container>
+    </PageContainer>
   );}
 
