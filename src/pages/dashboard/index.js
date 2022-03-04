@@ -14,14 +14,11 @@ import {CmRequest_listView}from "../../components/CmRequests"
     const [cmRequest, updateRequest] = useState( ()=> props.projectData);
 
     return(
-        <VStack>
+        <VStack >
             <Box><Heading>{props.name}</Heading></Box>
             <Box><Text> Project Heading</Text></Box>
             <Box>
-                <Text>CM Request</Text>
-                <p>
-                {JSON.stringify(cmRequest)}
-                </p>
+                <Text>CM Request--- user Option</Text>
             </Box>
             <CmRequest_listView cmRequest={cmRequest}/>
 

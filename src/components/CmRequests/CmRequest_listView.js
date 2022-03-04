@@ -6,7 +6,7 @@ export const CmRequest_listView = (props) => {
   const { cmRequest } = props;
 
   return (
-    <VStack>
+    <VStack justify="start" alignItems="start" m="25px">
       <CmRequestHeadings />
       {cmRequest.map((model) => (
         <CmRequestRow model={model} />

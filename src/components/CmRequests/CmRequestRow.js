@@ -1,27 +1,41 @@
 
 import { Grid, Box, Text, GridItem ,SimpleGrid} from '@chakra-ui/react';
-
+import {GridContainer} from './'
 export const CmRequestRow = (props) => {
   const { model } = props;
   const { id, modelName, description, modelBase, status, priority } = model;
 
   return (
-    <SimpleGrid bg="blue.100" height="80px" columns={6} spacing={1}>
+    <GridContainer>
       <GridItem>
         <Text bg="blue.200">{modelName}</Text>
       </GridItem>
+
       <GridItem>
-        <Text fontSize="xs" w="150px" bg="red.100">
+        <Text fontSize="xs" bg="red.100">
           {description}
         </Text>
       </GridItem>
 
+      <GridItem>
       <p>{modelBase}</p>
+      </GridItem>
 
+      <GridItem>
       <p>{priority}</p>
-      <Box w="50px" bg="gray.500">
+      </GridItem>
+
+      <GridItem>
+      <p>{status}</p>
+      </GridItem>
+
+      <GridItem>
+      <Box  bg="gray.500">
         :::
       </Box>
-    </SimpleGrid>
+
+      </GridItem>
+
+    </GridContainer>
   );
 };

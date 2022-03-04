@@ -20,13 +20,14 @@
 
 	"body":[
 		"import  { useState, useReducer } from \"react\";",
+		"import { Box } from \"@chakra-ui/react\";",
 		"",
 		"export const ${TM_FILENAME_BASE} = (props) => {",
 		"const {} = props;",
 		"return (",
-		"<div>",
+		"<Box>",
 		"      $2",
-		"</div>",
+		"</Box>",
 		");",
 		"};",
 	],
