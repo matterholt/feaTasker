@@ -1,0 +1,10 @@
+
+
+export default function UserDash  (props){
+ const{}=props
+ return(
+     <div>
+         <h2>User Page</h2>
+     </div>
+ )
+}

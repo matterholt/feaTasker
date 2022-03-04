@@ -1,5 +1,3 @@
-
-
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
 import Link from "next/link";
 import {
@@ -9,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import {
   Hero,Header,
-  Container,
+  PageContainer,
   Main,
   DarkModeSwitch,
   Footer,
@@ -17,18 +15,24 @@ import {
 
 
 
-export default function Index({ book }) {
+export default function Index() {
   return (
-    <Container height="100vh">
+    <PageContainer >
       <Header/>
-      <Hero />
-      <Main>
+      <Hero title="FEA Tracker"/>
+      <Main w="full" h="full" bg="blue.900">
         <Box>
           <Text>Create the opportunity for a smooth tracking system</Text>
-
         </Box>
-      </Main>
+        <Box>
+          <Text>Make sure that results get recorded</Text>
+        </Box>
+      </Main >
 
-    </Container>
+      <Footer>
+        <Text>Track it where it matters</Text>
+      </Footer>
+
+    </PageContainer>
   );}
 

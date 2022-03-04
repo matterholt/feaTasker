@@ -1,4 +1,4 @@
-export * from "./Container";
+export * from "./PageContainer";
 export * from "./Footer"
 export * from "./Hero"
 export * from './Main'
