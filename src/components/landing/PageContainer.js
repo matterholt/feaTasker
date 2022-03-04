@@ -1,4 +1,4 @@
-import { Flex, useColorMode, Container} from '@chakra-ui/react'
+import { Flex, useColorMode, Container,Box} from '@chakra-ui/react'
 
 export const PageContainer = (props) => {
   const { colorMode } = useColorMode()
@@ -7,7 +7,7 @@ export const PageContainer = (props) => {
   const color = { light: 'black', dark: 'white' }
 
   return (
-    <Container
+    <Box
       direction="column"
       bg={bgColor[colorMode]}
       color={color[colorMode]}

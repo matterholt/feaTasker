@@ -1,5 +1,3 @@
-
-
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
 import Link from "next/link";
 import {
@@ -21,15 +19,16 @@ export default function Index() {
   return (
     <PageContainer >
       <Header/>
-      <Hero />
-      <Main>
+      <Hero title="FEA Tracker"/>
+      <Main w="full" h="full" bg="blue.900">
         <Box>
           <Text>Create the opportunity for a smooth tracking system</Text>
         </Box>
         <Box>
-          <Text></Text>
+          <Text>Make sure that results get recorded</Text>
         </Box>
       </Main >
+
       <Footer>
         <Text>Track it where it matters</Text>
       </Footer>
