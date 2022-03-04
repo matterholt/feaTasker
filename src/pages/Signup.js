@@ -64,11 +64,24 @@ const Form = () => {
 function SignUp() {
   const [session, loading] = useSession();
 
+
+  function authAndDash (name){
+    console.log('hit it')
+  
+  }
+
   return (
     <Container w="100vw" h="100vh">
       <ChakraLink href="/" flexGrow={1} mr={2}>
         Home
       </ChakraLink>
+      <div style={{backgroundColor:"black",color:"white", padding:"10px"}}>
+        <h3>temp log in</h3>
+        <label>User name</label>
+        <input type="text" id="name" />
+        <button onClick={()=>authAndDash("jame")} style={{margin:5, backgroundColor:"blue", padding:"10px"}}>enter</button>
+
+      </div>
       <Flex width="full" align="center" justifyContent="center">
         <Box p={2}>
           {!session && (

@@ -1,23 +1,38 @@
+import {useState}from'react'
+import {VStack,Box,Heading,Text
+  } from "@chakra-ui/react";
+
+// custom componets
+import {CmRequest_listView}from "../../components/CmRequests"
 
 
 
- function UserDash (props){
 
-      const [cmRequest, updateRequest] = useState( ()=> props.ProjectData);
 
+
+ function Dashboard (props){
+    const [cmRequest, updateRequest] = useState( ()=> props.projectData);
 
     return(
-        <div>
-            <p>need</p>
-            {JSON.stringify(props)}
-        </div>
+        <VStack>
+            <Box><Heading>{props.name}</Heading></Box>
+            <Box><Text> Project Heading</Text></Box>
+            <Box>
+                <Text>CM Request</Text>
+                <p>
+                {JSON.stringify(cmRequest)}
+                </p>
+            </Box>
+            <CmRequest_listView cmRequest={cmRequest}/>
+
+        </VStack>
 
     )
 }
 
 export async function getServerSideProps() {
-
-    const ProjectData = [
+    const name= "James"
+    const projectData = [
         {
           id: 1,
           modelName: 'V00R00',
@@ -59,9 +74,17 @@ export async function getServerSideProps() {
           priority: 'low',
         },
       ]
+    if (!name) {
+        return {
+          redirect: {
+            destination: '/Signup',
+            permanent: false,
+          },
+        }
+      }
     return{
-        props:{name:"james",ProjectData}
+        props:{name,projectData}
     }
 }
 
-export default UserDash
+export default Dashboard
