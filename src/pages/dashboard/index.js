@@ -1,10 +1,10 @@
 import {useState}from'react'
-import {VStack,Box,Heading,Text
+import {Grid,Box,Heading,Text,Button,GridItem
   } from "@chakra-ui/react";
 
 // custom componets
 import {CmRequest_listView}from "../../components/CmRequests"
-
+import {SideMenu}from "../../components/SideMenu"
 
 
 
@@ -14,15 +14,32 @@ import {CmRequest_listView}from "../../components/CmRequests"
     const [cmRequest, updateRequest] = useState( ()=> props.projectData);
 
     return(
-        <VStack >
+        <Grid  
+        templateRows='150px, 1fr'
+        templateColumns='repeat(2,1fr)'
+        >
+
+ <GridItem colSpan={2}>
             <Box><Heading>{props.name}</Heading></Box>
             <Box><Text> Project Heading</Text></Box>
             <Box>
                 <Text>CM Request--- user Option</Text>
             </Box>
-            <CmRequest_listView cmRequest={cmRequest}/>
+    
+          </GridItem>
+          <GridItem >
+           <SideMenu/>
 
-        </VStack>
+          </GridItem>
+
+          <GridItem>
+
+
+            <CmRequest_listView cmRequest={cmRequest}/>
+   
+          </GridItem>
+
+        </Grid>
 
     )
 }
