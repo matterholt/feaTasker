@@ -1,39 +1,30 @@
 import {useState}from'react'
-import {Grid,Box,Heading,Text,Button,GridItem
+import {Grid,Box,Heading,Text,Button,GridItem,HStack
   } from "@chakra-ui/react";
 
 // custom componets
 import {CmRequest_listView}from "../../components/CmRequests"
-import {SideMenu}from "../../components/SideMenu"
-
-
-
-
+import {HeaderDash,SideMenu} from "../../components/Dashboard"
 
  function Dashboard (props){
+   const {name}= props
     const [cmRequest, updateRequest] = useState( ()=> props.projectData);
 
     return(
         <Grid  
         templateRows='150px, 1fr'
-        templateColumns='repeat(2,1fr)'
+        templateColumns='150px 1fr'
         >
 
- <GridItem colSpan={2}>
-            <Box><Heading>{props.name}</Heading></Box>
-            <Box><Text> Project Heading</Text></Box>
-            <Box>
-                <Text>CM Request--- user Option</Text>
-            </Box>
-    
-          </GridItem>
-          <GridItem >
+        <GridItem colSpan={2}>
+         <HeaderDash name={name}/>
+        </GridItem>
+        <GridItem >
            <SideMenu/>
-
-          </GridItem>
+        </GridItem>
 
           <GridItem>
-
+            <Heading>XYZ Rear Product</Heading>
 
             <CmRequest_listView cmRequest={cmRequest}/>
    
