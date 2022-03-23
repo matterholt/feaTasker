@@ -47,6 +47,11 @@ const EventSection = ()=>{
 
                      
                 </ListItem>
+
+                <ListItem>
+                    <Text>full schedule -></Text>
+                </ListItem>
+
             </List>
         </Box>
     )
@@ -66,7 +71,11 @@ const MessagesSection = ()=>{
                   New Messages
                   </Text>
                 </ListItem>
-
+                <ListItem>
+                    <Text>
+                  Message board ->
+                  </Text>
+                </ListItem>
             </List>
         </Box>
     )
