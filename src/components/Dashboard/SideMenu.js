@@ -1,4 +1,4 @@
-import { VStack,HStack, Box ,Heading,List,ListItem,ListIcon,Icon} from '@chakra-ui/react'
+import { VStack,HStack, Box ,Heading,List,ListItem,ListIcon,Icon,Text} from '@chakra-ui/react'
 import { MdCheckCircle,MdSettings,ViewIcon,ChevronUpIcon,BellIcon} from '@chakra-ui/icons'
 const CircleIcon = (props) => (
     <Icon viewBox='0 0 200 200' {...props}>
@@ -11,7 +11,7 @@ const CircleIcon = (props) => (
 const SectionTitle=(props)=>{
     const {title,isOpen}= props
     return(
-        <HStack justify="space-between" bg="yellow.300" p={2}>
+        <HStack justify="space-between" bg="yellow.300" p={2} >
 
         <Heading as='h2' size='lg'>{title}</Heading>
         {isOpen ? <ViewIcon/> : <ChevronUpIcon/>}
@@ -22,19 +22,30 @@ const SectionTitle=(props)=>{
     const {title}= props
 
      return(
-        <Heading as='h3' size='md' textAlign="center" p={2}>{title}</Heading>
+        <Heading as='h3' size='md' textAlign="center" borderBottom="2px"  m={2}>{title}</Heading>
      )
  }
+
+ const MenuText = (props)=>( <Text>{props.children}</Text>)
+
 const EventSection = ()=>{
     return(
         <Box>
         <SubHeading title="Events" />
             <List spacing={3}>
+
                 <ListItem>
-                    Kick off Meeting 09-12
+                   
+                        <MenuText>Kick off Meeting </MenuText>
+                        <Text size="xs" textAlign="right" fontWeight="thin">09-12</Text >
+               
                 </ListItem>
+
                 <ListItem>
-                    Issue GO1 dwg 09-14
+                    <MenuText>Issue GO1 dwg</MenuText>
+                    <Text size="xs" textAlign="right" fontWeight="thin">09-14</Text >
+
+                     
                 </ListItem>
             </List>
         </Box>
@@ -46,13 +57,16 @@ const MessagesSection = ()=>{
         <Box >
             <SubHeading title="Messages" />
             <List spacing={3}>
-                <ListItem>
-                  New Messages
-                </ListItem>
-                <ListItem >
-                    <HStack>New Messages <CircleIcon/>
+            <ListItem >
+                    <HStack><Text>Update layout</Text> <CircleIcon/>
                     </HStack>
                 </ListItem>
+                <ListItem>
+                    <Text>
+                  New Messages
+                  </Text>
+                </ListItem>
+
             </List>
         </Box>
     )
