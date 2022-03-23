@@ -13,7 +13,7 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
     return(
         <Grid  
         templateRows='150px, 1fr'
-        templateColumns='150px 1fr'
+        templateColumns='min-content 1fr'
         >
 
         <GridItem colSpan={2}>
@@ -23,8 +23,7 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
            <SideMenu/>
         </GridItem>
 
-          <GridItem>
-            <Heading>XYZ Rear Product</Heading>
+          <GridItem>  
 
             <CmRequest_listView cmRequest={cmRequest}/>
    

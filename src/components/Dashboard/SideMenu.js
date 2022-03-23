@@ -1,16 +1,34 @@
-import { VStack, Box ,Heading,List,ListItem,ListIcon} from '@chakra-ui/react'
-import { MdCheckCircle,MdSettings} from '@chakra-ui/icons'
-
+import { VStack,HStack, Box ,Heading,List,ListItem,ListIcon,Icon} from '@chakra-ui/react'
+import { MdCheckCircle,MdSettings,ViewIcon,ChevronUpIcon,BellIcon} from '@chakra-ui/icons'
+const CircleIcon = (props) => (
+    <Icon viewBox='0 0 200 200' {...props}>
+      <path
+        fill='red'
+        d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
+      />
+    </Icon>
+  )
 const SectionTitle=(props)=>{
-    const {title}= props
+    const {title,isOpen}= props
     return(
+        <HStack justify="space-between" bg="yellow.300" p={2}>
+
         <Heading as='h2' size='lg'>{title}</Heading>
+        {isOpen ? <ViewIcon/> : <ChevronUpIcon/>}
+        </HStack>
     )
 }
+ const SubHeading = (props)=>{
+    const {title}= props
+
+     return(
+        <Heading as='h3' size='md' textAlign="center" p={2}>{title}</Heading>
+     )
+ }
 const EventSection = ()=>{
     return(
         <Box>
-        <SectionTitle title="Events" />
+        <SubHeading title="Events" />
             <List spacing={3}>
                 <ListItem>
                     Kick off Meeting 09-12
@@ -23,46 +41,46 @@ const EventSection = ()=>{
     )
 }
 
-const ProjectSection= ()=>{
-    return(
-        <Box bg="blue.200">
-            <SectionTitle title="Projects" />
-
-            <List spacing={3}>
-                <ListItem bg="white">
-                   XYZ Rear Product
-                </ListItem>
-                <ListItem>
-                    AAB Front Product
-                </ListItem>
-            </List>
-        </Box>
-    )
-}
-
 const MessagesSection = ()=>{
     return (
-        <Box>
-            <SectionTitle title="Messages" />
+        <Box >
+            <SubHeading title="Messages" />
             <List spacing={3}>
                 <ListItem>
-                   Querry for XYZ
+                  New Messages
                 </ListItem>
-                <ListItem>
-                    New Request
+                <ListItem >
+                    <HStack>New Messages <CircleIcon/>
+                    </HStack>
                 </ListItem>
             </List>
         </Box>
     )
 }
 
+const ProjectSection= ()=>{
+    return(
+            <List spacing={3} >
+                <ListItem bg="white">
+                    <SectionTitle title="XYZ"  isOpen={true}/>
+                    <Box bg="gray.100"  p="5">
+                        <MessagesSection/>
+                        <EventSection/>
+                    </Box>
+                </ListItem>
+
+                <ListItem p="5">
+                <SectionTitle title="AAB"  isOpen={false}/>
+                    
+                </ListItem>
+            </List>
+    )
+}
 
 export const SideMenu= ()=>{
     return(
-    <VStack h="100vh" bg="blue.400">
-        <ProjectSection isDisplayed={true}/>
-        <MessagesSection/>
-        <EventSection/>
+    <VStack h="100vh" borderRight='1px' >
+        <ProjectSection isDisplayed={true}/>    
     </VStack>
 
 )}
