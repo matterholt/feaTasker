@@ -1,109 +1,55 @@
-import { VStack,HStack, Box ,Heading,List,ListItem,ListIcon,Icon,Text} from '@chakra-ui/react'
-import { MdCheckCircle,MdSettings,ViewIcon,ChevronUpIcon,BellIcon} from '@chakra-ui/icons'
-const CircleIcon = (props) => (
-    <Icon viewBox='0 0 200 200' {...props}>
-      <path
-        fill='red'
-        d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
-      />
-    </Icon>
-  )
+import {useEffect, useState}from 'react'
+import { VStack,HStack, Box ,Heading,List,ListItem,Button} from '@chakra-ui/react'
+import { ViewIcon,ChevronUpIcon} from '@chakra-ui/icons'
+
 const SectionTitle=(props)=>{
     const {title,isOpen}= props
+
+    const viewProject = title === isOpen
     return(
-        <HStack justify="space-between" bg="yellow.300" p={2} >
+        <HStack justify="space-between" bg={viewProject ?"yellow.300" : "white"} p={2} >
 
         <Heading as='h2' size='lg'>{title}</Heading>
-        {isOpen ? <ViewIcon/> : <ChevronUpIcon/>}
+        {viewProject ? <ViewIcon/> : <ChevronUpIcon/>}
         </HStack>
     )
 }
- const SubHeading = (props)=>{
-    const {title}= props
 
-     return(
-        <Heading as='h3' size='md' textAlign="center" borderBottom="2px"  m={2}>{title}</Heading>
-     )
- }
 
- const MenuText = (props)=>( <Text>{props.children}</Text>)
 
-const EventSection = ()=>{
-    return(
-        <Box>
-        <SubHeading title="Events" />
-            <List spacing={3}>
+const ProjectSection= (props)=>{
+    const{ViewProjectData}=props
+    const [selectedProject, setSelectedProject]=useState("allClosed")
 
-                <ListItem>
-                   
-                        <MenuText>Kick off Meeting </MenuText>
-                        <Text size="xs" textAlign="right" fontWeight="thin">09-12</Text >
-               
-                </ListItem>
-
-                <ListItem>
-                    <MenuText>Issue GO1 dwg</MenuText>
-                    <Text size="xs" textAlign="right" fontWeight="thin">09-14</Text >
-
-                     
-                </ListItem>
-
-                <ListItem>
-                    <Text>full schedule -></Text>
-                </ListItem>
-
-            </List>
-        </Box>
-    )
-}
-
-const MessagesSection = ()=>{
-    return (
-        <Box >
-            <SubHeading title="Messages" />
-            <List spacing={3}>
-            <ListItem >
-                    <HStack><Text>Update layout</Text> <CircleIcon/>
-                    </HStack>
-                </ListItem>
-                <ListItem>
-                    <Text>
-                  New Messages
-                  </Text>
-                </ListItem>
-                <ListItem>
-                    <Text>
-                  Message board ->
-                  </Text>
-                </ListItem>
-            </List>
-        </Box>
-    )
-}
-
-const ProjectSection= ()=>{
+    useEffect(()=>{
+        ViewProjectData(selectedProject)
+    },[selectedProject])
+    
     return(
             <List spacing={3} >
-                <ListItem bg="white">
-                    <SectionTitle title="XYZ"  isOpen={true}/>
-                    <Box bg="gray.100"  p="5">
-                        <MessagesSection/>
-                        <EventSection/>
-                    </Box>
-                </ListItem>
+                <ListItem bg="white" my="5">
+                    <Button onClick={()=>{setSelectedProject("XYZ")}}>
 
-                <ListItem p="5">
-                <SectionTitle title="AAB"  isOpen={false}/>
-                    
+                    <SectionTitle title="XYZ"  isOpen={selectedProject}/>
+                    </Button>
+                </ListItem>
+        
+                    <ListItem >
+                    <Button onClick={()=>{setSelectedProject("AAB")}}>
+
+
+                    <SectionTitle title="AAB"  isOpen={selectedProject}/>
+                        </Button>
                 </ListItem>
             </List>
     )
 }
 
-export const SideMenu= ()=>{
+export const SideMenu= (props)=>{
+    const {ViewProjectData}=props
     return(
     <VStack h="100vh" borderRight='1px' >
-        <ProjectSection isDisplayed={true}/>    
+        <ProjectSection ViewProjectData={ViewProjectData}/>    
     </VStack>
 
 )}
