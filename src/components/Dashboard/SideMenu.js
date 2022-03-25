@@ -8,7 +8,6 @@ const SectionTitle=(props)=>{
     const viewProject = title === isOpen
     return(
         <HStack justify="space-between" bg={viewProject ?"yellow.300" : "white"} p={2} >
-
         <Heading as='h2' size='lg'>{title}</Heading>
         {viewProject ? <ViewIcon/> : <ChevronUpIcon/>}
         </HStack>
@@ -24,23 +23,28 @@ const ProjectSection= (props)=>{
     useEffect(()=>{
         ViewProjectData(selectedProject)
     },[selectedProject])
-    
+
     return(
             <List spacing={3} >
+
                 <ListItem bg="white" my="5">
                     <Button onClick={()=>{setSelectedProject("XYZ")}}>
-
                     <SectionTitle title="XYZ"  isOpen={selectedProject}/>
                     </Button>
                 </ListItem>
         
-                    <ListItem >
+                <ListItem >
                     <Button onClick={()=>{setSelectedProject("AAB")}}>
-
-
                     <SectionTitle title="AAB"  isOpen={selectedProject}/>
-                        </Button>
+                    </Button>
                 </ListItem>
+
+                <ListItem >
+                    <Button onClick={()=>{setSelectedProject("Archive")}}>
+                    <SectionTitle title="Archive"  isOpen={selectedProject}/>
+                    </Button>
+                </ListItem>
+                
             </List>
     )
 }
