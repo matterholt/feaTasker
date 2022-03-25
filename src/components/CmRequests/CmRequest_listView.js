@@ -14,7 +14,7 @@ export const CmRequest_listView = (props) => {
       
       <CmRequestHeadings />
       {cmRequest.map((model) => (
-        <CmRequestRow model={model} />
+        <CmRequestRow model={model}  key={model.id}/>
       ))}
    
     </VStack>

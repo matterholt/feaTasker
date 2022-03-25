@@ -13,19 +13,12 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
 */
 
  function UserDash (props){
-   const {name,activeAssignedProjects}= props
-    const [cmRequest, updateRequest] = useState([        {
-      id: 1,
-      modelName: 'V00R00',
-      description: 'Make it better',
-      modelBase: 'new model',
-      status: 'completed',
-      priority: 'low',
-    },]);
-    const [activeViewProject, setActiveViewProject] = useState()
+   const {name,activeAssignedProjects,currentActiveProject}= props
+    const [cmRequest, updateRequest] = useState([]);
+    const [projectsList, setProjectsList] = useState(()=>activeAssignedProjects)
+    const [activeViewProject, setActiveViewProject] = useState(()=>currentActiveProject)
 
-
-    function ViewProjectData (projectCode){
+    function ViewProjectData (project){
       const projectData = [
         {
           id: 1,
@@ -69,12 +62,13 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
         },
       ]
 
-      console.log(" when the selected project changes updates the a function from the parent",projectCode)
-      setActiveViewProject(projectCode)
-      if(projectCode === "AAB"){
+      console.log(" when the selected project changes updates the a function from the parent",project)
+      setActiveViewProject(project)
+      
+      if(project.projectCode === "AAB"){
         updateRequest(projectData)
       }else{
-        setActiveViewProject("none")
+        setActiveViewProject(project)
         updateRequest("")
       }
     }
@@ -89,12 +83,20 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
         <GridItem colSpan={2}>
          <HeaderDash name={name}/>
         </GridItem>
+
         <GridItem >
-           <SideMenu ViewProjectData={ViewProjectData}/>
+           <SideMenu projectsList={projectsList} ViewProjectData={ViewProjectData}/>
         </GridItem>
 
           <GridItem  overflowY="scroll" bg="gray.100">  
-            <Heading m="2" w="full" textAlign="center">{activeViewProject}</Heading>
+
+          {
+          activeViewProject ?
+            <Heading m="2" w="full" textAlign="center">{activeViewProject.projectCode} {activeViewProject.partType}</Heading>
+            : null
+          
+          }
+
           {cmRequest ? <>
             <CmRequest_listView cmRequest={cmRequest}/>
           </> :
@@ -113,9 +115,12 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
 export async function getServerSideProps() {
   const name= "James"
  const activeAssignedProjects =[
-   {projectId:100,projectCode:"XYZ"},
-   {projectId:110,projectCode:"1x2y"},
+   {projectId:100,projectCode:"XYZ",partType:"Front Side"},
+   {projectId:110,projectCode:"1x2y",partType:"Sus Side"},
+   {projectId:120,projectCode:"AAB",partType:"Rear Side"},
+
  ]
+ const currentActiveProject = "XYZ"
 
 
 
@@ -130,7 +135,7 @@ export async function getServerSideProps() {
         }
       }
     return{
-        props:{name,activeAssignedProjects}
+        props:{name,activeAssignedProjects,currentActiveProject}
     }
 }
 

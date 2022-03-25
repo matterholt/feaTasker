@@ -17,7 +17,7 @@ const SectionTitle=(props)=>{
 
 
 const ProjectSection= (props)=>{
-    const{ViewProjectData}=props
+    const{ViewProjectData,projectsList}=props
     const [selectedProject, setSelectedProject]=useState("allClosed")
 
     useEffect(()=>{
@@ -26,34 +26,26 @@ const ProjectSection= (props)=>{
 
     return(
             <List spacing={3} >
+                {projectsList.map(project=>{
+                return(
+                <ListItem bg="white" my="5" key={project.projectId}>
+                    <Button onClick={()=>{setSelectedProject(project)}}>
+                    <SectionTitle title={project.projectCode}  isOpen={selectedProject}/>
+                    </Button>
+                </ListItem>)
+                })
 
-                <ListItem bg="white" my="5">
-                    <Button onClick={()=>{setSelectedProject("XYZ")}}>
-                    <SectionTitle title="XYZ"  isOpen={selectedProject}/>
-                    </Button>
-                </ListItem>
-        
-                <ListItem >
-                    <Button onClick={()=>{setSelectedProject("AAB")}}>
-                    <SectionTitle title="AAB"  isOpen={selectedProject}/>
-                    </Button>
-                </ListItem>
-
-                <ListItem >
-                    <Button onClick={()=>{setSelectedProject("Archive")}}>
-                    <SectionTitle title="Archive"  isOpen={selectedProject}/>
-                    </Button>
-                </ListItem>
+            }
                 
             </List>
     )
 }
 
 export const SideMenu= (props)=>{
-    const {ViewProjectData}=props
+    const {ViewProjectData,projectsList}=props
     return(
     <VStack h="100vh" borderRight='1px' >
-        <ProjectSection ViewProjectData={ViewProjectData}/>    
+        <ProjectSection ViewProjectData={ViewProjectData} projectsList={projectsList}/>    
     </VStack>
 
 )}
