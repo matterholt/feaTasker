@@ -15,10 +15,10 @@ const currentActiveProject = "XYZ"
 
 export const handlers =[
 
-    rest.get('/assignProjects',(req,res,ctx)=>{
+    rest.get('http://assignProjects',(req,res,ctx)=>{
         
         
-        const isAuthenticated = sessionStorage.getItem('is-authenticated');
+        // const isAuthenticated = sessionStorage.getItem('is-authenticated');
 
         // if(!isAuthenticated){
         //     return res(
@@ -33,7 +33,7 @@ export const handlers =[
         return res(
             ctx.status(200),
             ctx.json({
-                props:{name,activeAssignedProjects,currentActiveProject}
+               activeAssignedProjects,currentActiveProject
             })
         )
 

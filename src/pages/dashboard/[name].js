@@ -7,13 +7,17 @@ import {CmRequest_listView,NoFoundRequests}from "../../components/CmRequests"
 import {HeaderDash,SideMenu} from "../../components/Dashboard"
 
 
+
 /*
 - from the data base have the current project that user is working on
 - add switcht when no project are assigned
 */
 
  function UserDash (props){
-   const {name,activeAssignedProjects,currentActiveProject}= props
+   const {name,data}= props
+   const {activeAssignedProjects,currentActiveProject}= data
+
+
     const [cmRequest, updateRequest] = useState([]);
     const [projectsList, setProjectsList] = useState(()=>activeAssignedProjects)
     const [activeViewProject, setActiveViewProject] = useState(()=>currentActiveProject)
@@ -113,28 +117,13 @@ import {HeaderDash,SideMenu} from "../../components/Dashboard"
 
 
 export async function getServerSideProps() {
-  const name= "James"
- const activeAssignedProjects =[
-   {projectId:100,projectCode:"XYZ",partType:"Front Side"},
-   {projectId:110,projectCode:"1x2y",partType:"Sus Side"},
-   {projectId:120,projectCode:"AAB",partType:"Rear Side"},
-
- ]
- const currentActiveProject = "XYZ"
+  const res = await fetch('http://assignProjects')
+  const data = await res.json()
+  const name="james"
 
 
-
-
-    if (!name) {
-        return {
-          redirect: {
-            destination: '/login',
-            permanent: false,
-          },
-        }
-      }
     return{
-        props:{name,activeAssignedProjects,currentActiveProject}
+        props:{name,data}
     }
 }
 
