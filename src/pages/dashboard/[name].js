@@ -125,7 +125,6 @@ export async function getServerSideProps() {
 
 
 
-
     if (!name) {
         return {
           redirect: {
