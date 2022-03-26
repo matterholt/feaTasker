@@ -68,7 +68,6 @@ export const handlers =[
             const {projectId}= req.params
 
             const projectCms = projectData.filter(project => project.projectId === projectId)
-            console.log(projectCms)
 
             return res(
                 ctx.status(200),

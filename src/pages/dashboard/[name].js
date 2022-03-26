@@ -54,7 +54,6 @@ const ProjectRequestDataControler = (props)=>{
           .catch((e)=>setStatusRequest("rejected"))
        setActiveViewProject(project)
     }
-    useEffect(()=>{console.log('status--',statusRequest)})
 
  
 
