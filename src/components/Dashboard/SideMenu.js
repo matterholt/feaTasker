@@ -20,16 +20,18 @@ const ProjectSection= (props)=>{
     const{ViewProjectData,projectsList}=props
     const [selectedProject, setSelectedProject]=useState("allClosed")
 
-    useEffect(()=>{
-        ViewProjectData(selectedProject)
-    },[selectedProject])
+
+    function handleProjectView (project){
+        setSelectedProject(project.projectCode)
+        ViewProjectData(project)
+    }
 
     return(
             <List spacing={3} >
                 {projectsList.map(project=>{
                 return(
                 <ListItem bg="white" my="5" key={project.projectId}>
-                    <Button onClick={()=>{setSelectedProject(project)}}>
+                    <Button onClick={()=>{handleProjectView(project)}}>
                     <SectionTitle title={project.projectCode}  isOpen={selectedProject}/>
                     </Button>
                 </ListItem>)
