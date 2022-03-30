@@ -68,10 +68,10 @@ const ProjectRequestDataControler = (props)=>{
         </GridItem>
 
         <GridItem >
-           <SideMenu projectsList={projectsList} ViewProjectData={ViewProjectData}/>
+           <SideMenu username={username} projectsList={projectsList} ViewProjectData={ViewProjectData}/>
         </GridItem>
 
-          <GridItem  overflowY="scroll" bg="gray.100">  
+          <GridItem  bg="gray.100">  
 
           {
           activeViewProject ?

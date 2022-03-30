@@ -1,5 +1,5 @@
 import {useEffect, useState}from 'react'
-import { VStack,HStack, Box ,Heading,List,ListItem,Button} from '@chakra-ui/react'
+import { VStack,HStack, Box ,Heading,List,ListItem,Button,Text} from '@chakra-ui/react'
 import { ViewIcon,ChevronUpIcon} from '@chakra-ui/icons'
 
 const SectionTitle=(props)=>{
@@ -13,8 +13,6 @@ const SectionTitle=(props)=>{
         </HStack>
     )
 }
-
-
 
 const ProjectSection= (props)=>{
     const{ViewProjectData,projectsList}=props
@@ -44,10 +42,12 @@ const ProjectSection= (props)=>{
 }
 
 export const SideMenu= (props)=>{
-    const {ViewProjectData,projectsList}=props
+    const {ViewProjectData,projectsList,username="none"}=props
     return(
     <VStack h="100vh" borderRight='1px' >
+        <Box><Heading>{username}</Heading></Box>
         <ProjectSection ViewProjectData={ViewProjectData} projectsList={projectsList}/>    
+        <Box bg="red.100" border="1px" borderRadius={10} p="1">LOGOUT</Box>
     </VStack>
 
 )}

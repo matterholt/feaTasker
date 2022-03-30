@@ -30,8 +30,8 @@ export const CmRequestRow = (props) => {
       </GridItem>
 
       <GridItem>
-      <Box  bg="gray.500">
-        :::
+      <Box  bg="gray.500" color="white" p="2" fontSize="xs">
+        details
       </Box>
 
       </GridItem>

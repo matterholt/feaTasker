@@ -2,12 +2,11 @@ import {Text,Box,Heading,HStack} from '@chakra-ui/react';
 export const HeaderDash = (props) => {
     const {username}=props
   return(
-    <HStack borderBottom='1px' borderColor='gray.200' p="3" justify="space-between">
+    <HStack bg="blue.900" borderBottom='1px' borderColor='gray.200' p="3" justify="space-between">
 
-        <Text>DATE: 09-10-22</Text>
-        <Box><Heading>{username}</Heading></Box>
 
-        <Box bg="red.100" border="1px" borderRadius={10} p="1">LOGOUT</Box>
+<Text color="white"  fontSize="xs">DATE: 09-10-22</Text>
+
     </HStack>
   )
 };
